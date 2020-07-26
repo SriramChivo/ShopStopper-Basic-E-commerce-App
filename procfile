@@ -1,1 +1,1 @@
-web: gunicorn CustomerManagementApplication.wsgi --log-file-
+web: gunicorn CustomerManagementApplication.wsgi --log-file -
