@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('Registration/', Registration, name="registration"),
     path('Unauth/', Unauth, name="Unauth"),
+    path('', loginUser, name="homepage"),
     path('login/', loginUser, name="login"),
     re_path(r'^edit/(?P<id>\d+)/$', Edit, name="edit"),
     re_path(r'^form/(?P<id>\d+)/$', updateOrder, name="update"),
