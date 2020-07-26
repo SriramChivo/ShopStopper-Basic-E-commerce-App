@@ -1,0 +1,71 @@
+{% load static %}
+{% include 'CustomerManagementbase.html'%}
+{% load crispy_forms_tags%}
+
+<head>
+    <style>
+        .errorlist {
+            color: red;
+        }
+    </style>
+</head>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-4 col-md-4 mt-1 mb-4">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="" class="text-primary">{{addprod.Productname.label}}</label>
+                {{addprod.Productname}}
+                {%if addprod.errors.Productname %}
+                <p class="lead text-danger">
+                    {{addprod.errors.Productname}}
+                </p>
+                {%endif%}
+
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }} text-danger" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+
+                <label for="" class="text-primary">{{addprod.Category.label}}</label>
+                <div class="form-check">
+                    {%for i in addprod.Category%}
+                    <div class="container">
+                        {{i}}
+                    </div>
+                    {%endfor%}
+                </div>
+                {%if add.errors.Category%}
+                {{ add.errors.Category }}
+                {%endif%}
+                <label for="" class="text-primary">{{addprod.description.label}}</label>
+                {{addprod.description}}
+                {%if addprod.errors.description %}
+                <p class="lead text-danger">
+                    {{addprod.errors.description}}
+                </p>
+                {%endif%}
+                <label for="" class="text-primary">{{addprod.Price.label}}</label>
+                {{addprod.Price}}
+                {%if add.errors.Price%}
+                {{ add.errors.Price }}
+                {%endif%}
+                <label for="" class="text-primary">{{addprod.Tags.label}}</label>
+                <br>
+                {%for il in addprod.Tags%}
+                <div class="form-check form-check-inline">
+                    {{il}}
+                    <label class="form-check-label" for="inlineCheckbox1">{{il.label}}</label>
+                </div>
+                {%endfor%}
+                {%if add.errors.Tags%}
+                {{ add.errors.Tags }}
+                {%endif%}
+                <input type="submit" value="Add Product" class="button-btn btn-block btn-primary mt-3 p-1">
+            </form>
+        </div>
+    </div>
+</div>

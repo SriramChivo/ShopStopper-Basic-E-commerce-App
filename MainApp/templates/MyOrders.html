@@ -1,0 +1,61 @@
+{%load static%}
+{%include 'basemain.html'%}
+
+<head>
+    <link rel="stylesheet" href="{%static 'css/ProdDet.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-3 col-md-6">
+                <div class="alert alert-secondary my-4 text-center" role="alert">
+                    My Orders
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-md-2 col-md-8 my-4">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ordered Date</th>
+                            <th scope="col">Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for i in data%}
+                        <tr>
+                            <td>{{i.Item.Productname}}</td>
+                            <td>{{i.Item.Price}}</td>
+                            <td>{{i.Status}}</td>
+                            <td>{{i.dateCreated}}</td>
+                            <td><a href="{%url 'Delete' i.id%}" class="button btn btn-primary btn-sm">Cancel Order</a>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+                <div class="row my-4">
+                    <div class="col-md-12">
+                        <a href="{%url 'Main'%}" class="button btn btn-primary btn-block">Home</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(".navbar-nav li").removeClass("active");
+        console.log("ard");
+        $("#orders").addClass("active");
+    });
+</script>

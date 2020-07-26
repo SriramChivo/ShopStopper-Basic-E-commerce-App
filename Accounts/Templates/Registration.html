@@ -1,0 +1,85 @@
+<html>
+
+{% include 'base.html'%}
+{%load crispy_forms_tags%}
+{% load static %}
+
+<head>
+    <style>
+        body {
+            /* background-color: black; */
+            background-image: url("{% static 'images/macbook-pro.jpg' %}");
+            background-size: cover;
+        }
+
+        .vcenter {
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+        }
+
+        .underline {
+            width: 100px;
+            height: 10px;
+        }
+
+
+
+        h1.animate__animated.animate__slideInUp {
+            --animate-duration: 2s;
+        }
+
+        div:nth-child(3).animate__animated.animate__slideInUp {
+            /* background-color: white; */
+            --animate-duration: 1s;
+        }
+
+        div:nth-child(4).animate__animated.animate__slideInUp {
+            --animate-duration: 2.5s;
+        }
+
+        div:nth-child(5).animate__animated.animate__slideInUp {
+            --animate-duration: 3s;
+        }
+    </style>
+</head>
+
+<body class="w-100 h-100 d-flex align-items-center py-4">
+    <div class="vcenter container ">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="container text-center">
+                <h1 class="display-4 text-light animate__animated animate__slideInUp">Welcome</h1>
+            </div>
+            <div class="underline container border-bottom text-center animate__animated animate__slideInUp"></div>
+            <div class="row justify-content-center my-4 animate__animated animate__slideInUp">
+                <div class="col-md-4 text-light ">
+                    {{form.Email|as_crispy_field}}
+                </div>
+                <div class="col-md-4 text-light">
+                    {{form.UserName|as_crispy_field}}
+                </div>
+            </div>
+            <div class="row justify-content-center my-4 animate__animated animate__slideInUp">
+                <div class="col-md-4 text-light">
+                    {{form.password1|as_crispy_field}}
+                </div>
+                <div class="col-md-4 text-light">
+                    {{form.password2|as_crispy_field}}
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary my-4">Submit</button>
+                </div>
+
+                <div class="offset-md-3 col-md-6 offset-md-3 my-4">
+                    <p class="lead text-light">
+                        Already a Registered User <a class="border-bottom border-secondary" href="{%url 'login'%}">Click
+                            Here!</a>
+                    </p>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

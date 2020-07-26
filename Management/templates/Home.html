@@ -1,0 +1,149 @@
+{%load static%}
+{%include 'CustomerManagementbase.html'%}
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/Home.css'%}">
+</head>
+
+<body>
+    <!-- {{OrderDelivered}}
+    {{OrderUnderProcess}}
+    {{OrderPending}} -->
+    <div class="container-fluid my-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Order Created
+                    </div>
+                    <div class="card-body text-center">
+                        {{OrderUnderProcess}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Order Shipped
+                    </div>
+                    <div class="card-body text-center">
+                        {{Shipped}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Order Delivered
+                    </div>
+                    <div class="card-body text-center">
+                        {{OrderDelivered}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of first container-->
+    <br>
+    <div class="container-fluid my-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="text-center mb-4 text-uppercase">
+                    Today's Order Analytics
+                </h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {%for o in obj%}
+
+                        <tr>
+                            <td>{{o.0}}</td>
+                            <td>{{o.1}}</td>
+                            <td>{{o.2}}</td>
+                            <td>{{o.4}}</td>
+                            <td>
+                                <a href="{%url 'edit' o.3%}" class="button-btn btn-sm btn btn-outline-primary">Edit</a>
+                            </td>
+
+                        </tr>
+                        {%endfor%}
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-center my-4">
+                    Most Valuable Customers List
+                </h5>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Number of Orders</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {%for val in valuableCustomer%}
+
+                        <tr>
+                            <td>{{val.0}}</td>
+                            <td>{{val.1}}</td>
+
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-center my-4">Today's Product Analytics
+                </h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Products</th>
+                            <th scope="col">Number of Orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for prod in prodcount%}
+
+                        <tr>
+                            <td> {{prod.0}}
+
+                            </td>
+                            <td> {{prod.1}}
+
+                            </td>
+                        </tr> {%endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

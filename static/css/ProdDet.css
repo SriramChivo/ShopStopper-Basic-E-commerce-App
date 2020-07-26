@@ -1,0 +1,17 @@
+.table td {
+    text-align: center;
+}
+
+.table thead {
+    text-align: center;
+    background-color: #34ebc0 !important;
+}
+
+.table tbody tr th {
+    text-align: center;
+    background-color: #B0A6A6 !important;
+}
+
+.card-header {
+    background-color: #34ebc0 !important;
+}

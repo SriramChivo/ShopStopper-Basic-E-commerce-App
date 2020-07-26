@@ -1,0 +1,81 @@
+from django.db import models
+# or from django import settings use settings.AUTH_USER_MODEL or Accounts
+from Accounts.models import Accounts
+# Create your models here.
+
+
+class Customer(models.Model):
+    Profile = models.OneToOneField(
+        Accounts, null=True, on_delete=models.CASCADE)
+    profilePic = models.ImageField(default="Defaut.jpg")
+    name = models.CharField(max_length=60, null=True)
+    Phone = models.BigIntegerField(null=True, blank=True)
+    Address = models.CharField(max_length=60, null=True, blank=True)
+    State = models.CharField(max_length=60, null=True, blank=True)
+    zipcode = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Customers"
+
+
+class Tags(models.Model):
+    tags = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.tags
+
+    class Meta:
+        verbose_name_plural = "Tags"
+
+
+class Products(models.Model):
+    Catgory = (
+        ('Indoor', 'Indoor'),
+        ('OutDoor', 'OutDoor')
+    )
+
+    Productname = models.CharField(max_length=100)
+    Category = models.CharField(max_length=100, choices=Catgory)
+    description = models.CharField(max_length=60)
+    Price = models.FloatField()
+    Tags = models.ManyToManyField(Tags)
+
+    def __str__(self):
+        return self.Productname
+
+    class Meta:
+        verbose_name_plural = "Products"
+
+
+class Orders(models.Model):
+    choices = (
+        ('Shipped', 'Shipped'),
+        ('UnderProcessing', 'UnderProcessing'),
+        ('Out For delivery', 'Out For Delivery'),
+        ('Delivered', 'Delivered')
+    )
+    OrderedBy = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    Item = models.ForeignKey(Products, on_delete=models.CASCADE)
+    Status = models.CharField(
+        max_length=60, choices=choices, blank=False, default=0)  # to remove the blank and dotted lines at front cant be done at initial
+    dateCreated = models.DateTimeField(auto_now_add=True)
+    UpdatedTime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.OrderedBy.name + " Ordered a Product " + self.Item.Productname
+
+    class Meta:
+        verbose_name_plural = "orders"
+
+
+class State(models.Model):
+    name = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "States"

@@ -1,0 +1,85 @@
+{% load static %}
+{% include 'basemain.html'%}
+
+<head>
+    <link rel="stylesheet" href="{%static 'css/Main.css' %}">
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-3 col-md-6">
+                <form action="" method="GET" id="form1">
+                    <div class="form-row my-4 align-items-center">
+                        <div class="col-sm-9">
+                            <input type=" text" class="form-control" id="Q" name="Q" placeholder="Search a Product">
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <input type="submit" value="Search" class="button btn btn-primary btn-sm my-1">
+                        </div>
+                    </div>
+
+            </div>
+            <div class="offset-md-3 col-md-6">
+                <p class="lead text-secondary">Search By Tags: </p>
+                <div class="form-row">
+                    {%for i in Tags%}
+                    <div class="form-check mx-1">
+                        <input class="form-check-input" type="radio" value="{{i}}" name="Check">
+                        <label class="form-check-label" for="{{i.id}}">
+                            {{i}}
+                        </label>
+                    </div>
+                    {%endfor%}
+                    <div class="form-check mx-1">
+                        <input class="form-check-input" type="radio" value="All" name="Check">
+                        <label class="form-check-label" for="All">
+                            All
+                        </label>
+                    </div>
+                </div>
+                </form>
+
+
+            </div>
+            <div class="offset-md-2 col-md-8 col-sm-12">
+                <table class="table table-striped my-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">Our Products</th>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in object_list%}
+                        <tr>
+                            <td>
+                                {{i}}
+                            </td>
+                            <td>
+                                <a href="{%url 'Details' i.id %}" class="button-btn btn-primary btn-sm">
+                                    <!--or{{i.id}}-->
+                                    Details
+                                </a>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+<script>
+    $('input[name=Check]').change(function () {
+        setTimeout(function () {
+            if ($('input[name=Check]').is(':checked')) {
+                values = $('input[name=Check]:checked').val();
+                $(" #form1").submit();
+            }
+        }, 300);
+    });
+</script>

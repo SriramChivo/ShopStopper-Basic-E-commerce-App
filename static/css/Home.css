@@ -1,0 +1,12 @@
+.table td {
+    text-align: center;
+}
+
+.table th {
+    text-align: center;
+    background-color: #34ebc0 !important;
+}
+
+.card-header {
+    background-color: #34ebc0 !important;
+}

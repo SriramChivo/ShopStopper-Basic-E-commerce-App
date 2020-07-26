@@ -1,0 +1,52 @@
+{%load static%}
+{%include 'basemain.html'%}
+{%load crispy_forms_tags%}
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/MyProfile.css' %}">
+</head>
+
+</html>
+
+<body>
+    <div class="container my-5">
+        <div class="row">
+            <div class="container">
+                {% if messages %}
+                <div class="offset-md-2 col-md-8 offset-md-2 text-center text-uppercase font-weight-bold">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                        </ul>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <img src="{{customer.profilePic.url}}" alt="" style="height: 250px;width: 250px;"
+                    class="rounded-circle">
+            </div>
+            <div class="offset-md-2 col-md-6">
+                <label class="text-primary font-weight-bold" for=""> Name:</label>
+                <p class="lead">{{customer.name}}</p>
+                <label class="text-primary font-weight-bold" for=""> Phone:</label>
+                <p class="lead">{{customer.Phone}}</p>
+                <label class="text-primary font-weight-bold" for=""> Address:</label>
+                <p class="lead">{{customer.Address}}</p>
+                <label class="text-primary font-weight-bold" for=""> State:</label>
+                <p class="lead">{{customer.State}}</p>
+                <label class="text-primary font-weight-bold" for=""> Zipcode:</label>
+                <p class="lead">{{customer.zipcode}}</p>
+                <a href="{%url 'update'%}" class="button btn btn-primary btn-sm my-2">Update</a>
+            </div>
+        </div>
+    </div>
+</body>

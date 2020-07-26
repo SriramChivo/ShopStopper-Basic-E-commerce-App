@@ -1,0 +1,64 @@
+{%load static%}
+{%include 'CustomerManagementbase.html'%}
+
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/edit.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                <span data-bind="label">Status</span>&nbsp;<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                {% for t in edit.Status %}
+                <li><a href="#">{{ t }}</a></li>
+                {% endfor %}
+            </ul>
+        </div> -->
+    </div>
+    <div class="row my-4">
+        <div class="offset-md-4 col-md-4">
+            <form action="" method="POST">
+                {% csrf_token%}
+                <label for="" class="text-primary my-3">
+                    Customer
+                </label>
+                <select class="form-control" id="customer_type" name="customer_type1" disabled>
+                    {%for type in edit.OrderedBy%}
+                    {{type}}
+                    {%endfor%}
+                </select>
+                <label for="" class="text-primary my-3">
+                    Product
+                </label>
+                <select class="form-control" id="customer_type" name="customer_type2" disabled>
+                    {%for type in edit.Item%}
+                    {{type}}
+                    {%endfor%}
+                </select>
+                <label for="" class="text-primary my-3">
+                    Status
+                </label>
+                <select class="form-control" id="customer_type" name="customer_type3">
+                    {%for type in edit.Status%}
+                    {{type}}
+                    {%endfor%}
+                </select>
+                <br>
+                <input type="submit" value="Change Status" class="button btn btn-primary btn-block my-4">
+            </form>
+            <!-- <button class="button btn btn-primary d-block">
+
+            </button> -->
+        </div>
+
+    </div>
+
+</body>
+
+</html>

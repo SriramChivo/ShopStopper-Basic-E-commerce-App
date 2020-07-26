@@ -1,0 +1,8 @@
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: 0;
+}
+
+/* .navbar {
+    background-color: #34ebc0 !important;
+} */

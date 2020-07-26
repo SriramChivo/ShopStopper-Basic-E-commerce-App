@@ -1,0 +1,62 @@
+{%load static%}
+{%include 'basemain.html'%}
+
+<head>
+    <link rel="stylesheet" href="{%static 'css/ProdDet.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row my-4">
+            <div class="offset-md-3 col-md-6">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Product_details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">ProductName</th>
+                            <td>{{object.Productname}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Category</th>
+                            <td>{{object.Category}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">description</th>
+                            <td>{{object.description}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price</th>
+                            <td>{{object.Price}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tags</th>
+                            <td>
+                                {%if object.Tags.all|length > 1%}
+                                {%for i in object.Tags.all%}
+                                {{i}},
+                                {%endfor%}
+                                {%else%}
+                                {{object.Tags.first}}
+                                {%endif%}
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-md-12 my-4">
+                    <a href="{% url 'createorder' object.id %}" class="button btn btn-primary btn-block">
+                        Order
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
