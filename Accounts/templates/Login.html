@@ -8,7 +8,7 @@
     <style>
         body {
             /* background-color: black; */
-            background-image: url("{% static 'images/macbook-pro.jpg' %}");
+            background-image: url("{% static 'images/mac3.jpg' %}");
             background-size: cover;
         }
 
@@ -61,7 +61,7 @@
         <form method="POST">
             {% csrf_token %}
             <div class="container text-center">
-                <h1 class="display-4 text-light animate__animated animate__slideInUp">LogIn</h1>
+                <h1 class="display-4 text-light animate__animated animate__slideInUp">Login</h1>
             </div>
             <div class="underline container border-bottom text-center animate__animated animate__slideInUp"></div>
             <div class="row justify-content-center my-4 animate__animated animate__slideInUp">
@@ -87,7 +87,8 @@
             </div>
             <div class="col-md-6 offset-md-3 text-center my-4">
                 <p class="lead text-light">
-                    Register Here <a class="border-bottom border-secondary" href="{%url 'registration'%}">Click
+                    Register Here <a class="border-bottom border-secondary text-dark"
+                        href="{%url 'registration'%}">Click
                         Here!</a>
                 </p>
             </div>

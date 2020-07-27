@@ -49,39 +49,42 @@
     <br>
     <div class="container-fluid my-4">
         <div class="row">
-            <div class="col-md-12">
-                <h5 class="text-center mb-4 text-uppercase">
-                    Today's Order Analytics
-                </h5>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
+            <div class="table-responsive">
+                <div class="col-md-12">
+                    <h5 class="text-center mb-4 text-uppercase">
+                        Today's Order Analytics
+                    </h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        {%for o in obj%}
+                        <tbody>
+                            {%for o in obj%}
 
-                        <tr>
-                            <td>{{o.0}}</td>
-                            <td>{{o.1}}</td>
-                            <td>{{o.2}}</td>
-                            <td>{{o.4}}</td>
-                            <td>
-                                <a href="{%url 'edit' o.3%}" class="button-btn btn-sm btn btn-outline-primary">Edit</a>
-                            </td>
+                            <tr>
+                                <td>{{o.0}}</td>
+                                <td>{{o.1}}</td>
+                                <td>{{o.2}}</td>
+                                <td>{{o.4}}</td>
+                                <td>
+                                    <a href="{%url 'edit' o.3%}"
+                                        class="button-btn btn-sm btn btn-outline-primary">Edit</a>
+                                </td>
 
-                        </tr>
-                        {%endfor%}
+                            </tr>
+                            {%endfor%}
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -18,7 +18,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="{%url 'home'%}">
+        <a class="navbar-brand" href="{%url 'Main'%}">
             <img src="{% static 'images/shop.png'%}" width="30" height="30" class="d-inline-block align-top" alt="">
             ShopperStop
         </a>
@@ -37,6 +37,9 @@
                 </li>
                 <li class="nav-item" id="prof">
                     <a class="nav-link" href="{% url 'MyProfile' %}">My Profile</a>
+                </li>
+                <li class="nav-item" id="prof">
+                    <a class="nav-link" href="{% url 'home' %}">Dashborad</a>
                 </li>
             </ul>
 
